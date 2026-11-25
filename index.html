@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Sumanchola Emi</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ag-page app-shell">
+
+  <!-- Full App Background Real Chola Finance Watermark -->
+  <div class="chola-full-watermark" aria-hidden="true"></div>
+
+  <!-- App Header with Real Chola Official Logo & App Name "Sumanchola Emi" -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="chola-official-badge">
+        <img src="chola_official_logo.svg" alt="Chola Logo" class="chola-real-img" />
+      </div>
+      <div class="brand-text-col">
+        <div class="brand-title-wrap">
+          <h1 class="brand-app-name">Sumanchola Emi</h1>
+          <span class="brand-verified-chip">✓ Chola</span>
+        </div>
+        <p class="brand-tagline">Cholamandalam Investment &amp; Finance • Lending Engine</p>
+      </div>
+    </div>
+    <div class="header-tools">
+      <button class="tool-btn glow-on-hover" id="btn-copy" title="Copy Loan Summary" aria-label="Copy Quote">📋</button>
+      <button class="tool-btn glow-on-hover" id="btn-export" title="Export CSV Schedule" aria-label="Export CSV">📥</button>
+      <button class="tool-btn glow-on-hover" id="btn-reset" title="Reset to Default" aria-label="Reset All">↺</button>
+    </div>
+  </header>
+
+  <main class="ag-content main-container">
+
+    <!-- Method Selector Tabs -->
+    <div class="method-selector-container">
+      <div class="method-tabs" role="tablist">
+        <button class="method-tab is-active" id="tab-cap" data-method="capitalization" role="tab" aria-selected="true">
+          <span class="tab-badge">Recommended</span>
+          Capitalization
+        </button>
+        <button class="method-tab" id="tab-add" data-method="add_to_first" role="tab" aria-selected="false">
+          <span class="tab-badge">Alternative</span>
+          Add to First EMI
+        </button>
+        <button class="method-tab" id="tab-cmp" data-method="compare" role="tab" aria-selected="false">
+          Compare Both
+        </button>
+      </div>
+    </div>
+
+    <!-- 1. VEHICLE / ON ROAD PRICE & DOWN PAYMENT CARD -->
+    <div class="calc-card anim-slide-up">
+      <div class="card-heading">
+        <span class="step-chip">1</span>
+        <span class="heading-text">Vehicle Price &amp; Down Payment (DP)</span>
+      </div>
+
+      <div class="dates-two-col">
+        <div class="input-group">
+          <label class="field-label" for="inp-on-road">On Road Price</label>
+          <div class="input-with-rs compact-money">
+            <span class="rs-label">₹</span>
+            <input type="number" class="fee-input" id="inp-on-road" value="0" min="0" step="1000" placeholder="e.g. 150000">
+          </div>
+          <div class="mini-chips-row">
+            <button class="mini-chip wave-btn" data-set="onroad" data-val="85000">₹85K</button>
+            <button class="mini-chip wave-btn" data-set="onroad" data-val="100000">₹1L</button>
+            <button class="mini-chip wave-btn" data-set="onroad" data-val="150000">₹1.5L</button>
+            <button class="mini-chip wave-btn" data-set="onroad" data-val="200000">₹2L</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="field-label" for="inp-dp">Down Payment (DP)</label>
+          <div class="input-with-rs compact-money">
+            <span class="rs-label">₹</span>
+            <input type="number" class="fee-input" id="inp-dp" value="0" min="0" step="500" placeholder="e.g. 20000">
+          </div>
+          <div class="mini-chips-row">
+            <button class="mini-chip wave-btn" data-set="dp" data-val="10000">₹10K</button>
+            <button class="mini-chip wave-btn" data-set="dp" data-val="15000">₹15K</button>
+            <button class="mini-chip wave-btn" data-set="dp" data-val="20000">₹20K</button>
+            <button class="mini-chip wave-btn" data-set="dp" data-val="30000">₹30K</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auto calculated info banner -->
+      <div class="auto-loan-banner" id="box-auto-loan" style="display: none;">
+        <span>On Road: <strong id="lbl-auto-onroad">₹0</strong></span>
+        <span>− DP: <strong id="lbl-auto-dp">₹0</strong></span>
+        <span>= Loan Amount: <strong class="text-primary-bold" id="lbl-auto-loan">₹0</strong></span>
+      </div>
+    </div>
+
+    <!-- 2. LOAN DETAILS CARD -->
+    <div class="calc-card anim-slide-up" style="animation-delay: 0.05s;">
+      <div class="card-heading">
+        <span class="step-chip">2</span>
+        <span class="heading-text">Loan Details</span>
+        <span class="badge-lock">🔒 Chola IRR: <strong>21.05%</strong></span>
+      </div>
+
+      <!-- Loan Amount Input (Editable & Synced) -->
+      <div class="input-group">
+        <div class="field-label-row">
+          <label class="field-label" for="inp-loan-amount">Loan Amount (Editable / Auto from DP)</label>
+          <span class="badge-lock">✏️ Editable</span>
+        </div>
+        <div class="money-input-container glow-focus">
+          <span class="currency-sign">₹</span>
+          <input type="number" class="big-money-input" id="inp-loan-amount" min="1000" max="10000000" step="500" value="16500" placeholder="16500">
+        </div>
+        <div class="words-line" id="txt-amount-words">₹16,500 (Sixteen Thousand Five Hundred Rupees)</div>
+
+        <div class="presets-row">
+          <span class="presets-label">Presets:</span>
+          <button class="preset-btn is-active wave-btn" data-set="loan" data-val="16500">₹16.5K</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="50000">₹50K</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="78000">₹78K</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="103000">₹1.03L</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="121000">₹1.21L</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="150000">₹1.5L</button>
+          <button class="preset-btn wave-btn" data-set="loan" data-val="200000">₹2.0L</button>
+        </div>
+      </div>
+
+      <!-- Tenure & Dates Grid (Includes 30M and 48M!) -->
+      <div class="dates-two-col">
+        <div class="input-group">
+          <label class="field-label" for="inp-tenor">Tenure (Months)</label>
+          <div class="tenor-input-row">
+            <input type="number" class="tenure-number-input" id="inp-tenor" value="12" min="1" max="60">
+            <span class="tenor-unit">Months</span>
+          </div>
+          <div class="mini-chips-row tenure-grid-chips">
+            <button class="mini-chip wave-btn" data-set="tenor" data-val="6">6M</button>
+            <button class="mini-chip is-active wave-btn" data-set="tenor" data-val="12">12M</button>
+            <button class="mini-chip wave-btn" data-set="tenor" data-val="23">23M</button>
+            <button class="mini-chip wave-btn" data-set="tenor" data-val="24">24M</button>
+            <button class="mini-chip wave-btn special-tenor-chip" data-set="tenor" data-val="30">30M</button>
+            <button class="mini-chip wave-btn" data-set="tenor" data-val="35">35M</button>
+            <button class="mini-chip wave-btn" data-set="tenor" data-val="36">36M</button>
+            <button class="mini-chip wave-btn special-tenor-chip" data-set="tenor" data-val="48">48M</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label class="field-label" for="inp-disb-date">Disbursement Date (Auto Today)</label>
+          <input type="date" class="date-control" id="inp-disb-date" value="2026-11-24">
+          <div class="sub-date-info" id="txt-disb-date-formatted">24-Nov-2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PROCESSING FEE (4% FIX) & COMPANY CHARGES -->
+    <div class="calc-card anim-slide-up" style="animation-delay: 0.1s;">
+      <div class="card-heading">
+        <span class="step-chip">3</span>
+        <span class="heading-text">Fees &amp; Dealer Commission</span>
+        <span class="badge-status badge-dealer-fixed">Dealers PF: 4% Fixed</span>
+      </div>
+
+      <div class="fees-two-col">
+        <!-- Processing Fee (Dealers 4% Default) -->
+        <div class="fee-tile fee-tile-active">
+          <div class="tile-header">
+            <span class="tile-label">Dealer Processing Fee</span>
+            <span class="tile-tag-pill" id="txt-pf-calc-hint">4.0% Auto</span>
+          </div>
+          <div class="input-with-rs">
+            <span class="rs-label">₹</span>
+            <input type="number" class="fee-input" id="inp-pf-amount" value="660" step="50" min="0">
+          </div>
+          <div class="pf-fixed-notice">
+            <span class="notice-icon">⚡</span>
+            <span>Dealer Processing Fee fix <strong>4.0%</strong> calculate hoti hai</span>
+          </div>
+        </div>
+
+        <!-- Company Charges — Optional & Editable -->
+        <div class="fee-tile">
+          <div class="tile-header">
+            <div class="company-toggle-row">
+              <input type="checkbox" id="chk-enable-company" class="styled-checkbox" checked>
+              <span class="tile-label">Company Charges</span>
+            </div>
+            <span class="tile-hint">Documentation</span>
+          </div>
+          <div id="box-company-controls">
+            <div class="input-with-rs">
+              <span class="rs-label">₹</span>
+              <input type="number" class="fee-input" id="inp-company-fee" value="3500" step="100" min="0">
+            </div>
+            <div class="mini-chips-row">
+              <button class="mini-chip wave-btn" data-set="company" data-val="3000">₹3K</button>
+              <button class="mini-chip is-active wave-btn" data-set="company" data-val="3500">₹3.5K</button>
+              <button class="mini-chip wave-btn" data-set="company" data-val="4000">₹4K</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-financed-banner">
+        <span>Base Loan: <strong id="lbl-fee-base">₹16,500</strong></span>
+        <span>+ PF (4%): <strong id="lbl-fee-pf">₹660</strong></span>
+        <span>+ Company: <strong id="lbl-fee-comp">₹3,500</strong></span>
+        <span>= Total Financed: <strong class="text-primary-bold" id="lbl-fee-total">₹20,660</strong></span>
+      </div>
+    </div>
+
+    <!-- 4. BROKEN-PERIOD & INITIAL INTEREST BANNER -->
+    <div class="excel-bpi-banner anim-slide-up" style="animation-delay: 0.15s;">
+      <div class="bpi-col">
+        <span class="bpi-title">Immediate 5th Due Date</span>
+        <span class="bpi-main" id="lbl-imm-date">05-Dec-2026</span>
+        <span class="bpi-sub" id="lbl-bpi-days">11 Days (DAYS360)</span>
+      </div>
+      <div class="bpi-sep"></div>
+      <div class="bpi-col">
+        <span class="bpi-title">Initial Interest (Broken Period)</span>
+        <span class="bpi-main text-accent" id="lbl-initial-interest">₹133</span>
+        <span class="bpi-sub" id="lbl-bpi-formula">Capitalized into Principal</span>
+      </div>
+    </div>
+
+    <!-- 5. MANDATE & EMI SUMMARY CARD -->
+    <div class="excel-kpi-card anim-slide-up" style="animation-delay: 0.2s;">
+      <div class="kpi-header-row">
+        <div class="kpi-tag-wrap">
+          <span class="kpi-tag" id="lbl-active-method-tag">Capitalization</span>
+          <span class="chola-mini-stamp">SUMANCHOLA VERIFIED</span>
+        </div>
+        <span class="kpi-excel-cell" id="lbl-excel-formula-cell"></span>
+      </div>
+
+      <!-- Hero EMI Box with Animation Pulse -->
+      <div class="hero-emi-container">
+        <div class="hero-label" id="lbl-hero-title">Monthly EMI</div>
+        <div class="hero-amount pulse-glow" id="lbl-hero-emi">₹1,937</div>
+        <div class="hero-sub" id="lbl-hero-sub">1st cycle: ₹0 (Capitalized) + 12 Monthly EMIs</div>
+      </div>
+
+      <!-- Mandate Box -->
+      <div class="excel-yellow-mandate-box">
+        <div class="mandate-col">
+          <span class="mandate-header">eNACH / ACH Total</span>
+          <span class="mandate-amount-highlight" id="lbl-enach-amount">₹23,244</span>
+          <span class="mandate-formula-note" id="lbl-enach-formula">Total Mandate Limit</span>
+        </div>
+        <div class="mandate-sep"></div>
+        <div class="mandate-col">
+          <span class="mandate-header">UPI Mandate Limit</span>
+          <span class="mandate-amount-highlight" id="lbl-upi-amount">₹1,937</span>
+          <span class="mandate-formula-note" id="lbl-upi-formula">Single Debit Cap</span>
+        </div>
+      </div>
+
+      <!-- LOAN SUMMARY STATS GRID: Kitna Loan, Kitna Dena, Kitna Extra -->
+      <div class="summary-stats-grid">
+        <div class="summary-stat-tile stat-tilt-card">
+          <span class="summary-stat-icon">🏦</span>
+          <span class="summary-stat-label">Total Loan Amount</span>
+          <span class="summary-stat-val" id="lbl-total-loan">₹20,793</span>
+          <span class="summary-stat-sub" id="lbl-total-loan-sub">Financed Loan + Broken Interest</span>
+        </div>
+        <div class="summary-stat-tile stat-tilt-card">
+          <span class="summary-stat-icon">💰</span>
+          <span class="summary-stat-label">Total Repayment</span>
+          <span class="summary-stat-val text-warn" id="lbl-total-repay">₹23,244</span>
+          <span class="summary-stat-sub">Customer total return amount</span>
+        </div>
+        <div class="summary-stat-tile stat-tilt-card">
+          <span class="summary-stat-icon">📊</span>
+          <span class="summary-stat-label">Total Interest (Extra)</span>
+          <span class="summary-stat-val text-extra" id="lbl-total-interest">₹2,451</span>
+          <span class="summary-stat-sub" id="lbl-interest-sub">Total interest paid</span>
+        </div>
+        <div class="summary-stat-tile stat-tilt-card">
+          <span class="summary-stat-icon">📋</span>
+          <span class="summary-stat-label">Base Loan Disbursed</span>
+          <span class="summary-stat-val" id="lbl-sanctioned-loan">₹16,500</span>
+          <span class="summary-stat-sub">Pure vehicle finance amount</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. COMPARISON VIEW (When Compare Tab is Active) -->
+    <div class="calc-card compare-card anim-slide-up" id="box-compare-section" style="display: none;">
+      <h2 class="compare-title">Capitalization vs Add to First EMI</h2>
+      <div class="table-scroll-container">
+        <table class="schedule-data-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Capitalization</th>
+              <th>Add to First EMI</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+          <tbody id="tbl-compare-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 7. KEY EMI DATES: FIRST & LAST EMI -->
+    <div class="calc-card anim-slide-up" style="animation-delay: 0.25s;">
+      <div class="card-heading">
+        <span class="step-chip">📅</span>
+        <span class="heading-text">EMI Due Dates (First &amp; Last)</span>
+        <span class="badge-lock">Tenure: <strong id="lbl-key-total-tenor">12 Months</strong></span>
+      </div>
+
+      <div class="key-dates-grid">
+        <!-- 1st Repayment EMI Date -->
+        <div class="key-date-card first-emi-pill">
+          <div class="key-date-tag">First EMI Date</div>
+          <div class="key-date-val highlight-green" id="lbl-first-emi-date">05-Jan-2027</div>
+          <div class="key-date-sub">EMI Amount: <strong class="text-primary-bold" id="lbl-first-emi-amt">₹1,937</strong></div>
+        </div>
+
+        <!-- Last Repayment EMI Date -->
+        <div class="key-date-card last-emi-pill">
+          <div class="key-date-tag">Last EMI Date (Maturity)</div>
+          <div class="key-date-val highlight-gold" id="lbl-last-emi-date">05-Dec-2027</div>
+          <div class="key-date-sub">Final EMI: <strong class="text-primary-bold" id="lbl-last-emi-amt">₹1,937</strong></div>
+        </div>
+      </div>
+
+      <div class="key-date-footer-note">
+        <span>⚡ Cycle 1 (Broken Period): <strong id="lbl-cycle1-date">05-Dec-2026</strong> (₹0 EMI - Interest Capitalized)</span>
+      </div>
+
+      <!-- Collapsible Full Schedule Table (Closed by default - only 1st & last shown above) -->
+      <details class="full-schedule-accordion">
+        <summary class="accordion-summary">
+          <span>📜 View Complete Schedule Table (<span id="lbl-total-emis-count">12 Months</span>)</span>
+          <span class="accordion-arrow">▼</span>
+        </summary>
+        <div class="table-scroll-container compact-table-wrap">
+          <table class="schedule-data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Due Date</th>
+                <th class="col-right">EMI Amount (₹)</th>
+                <th class="col-right">Outstanding Balance (₹)</th>
+              </tr>
+            </thead>
+            <tbody id="tbl-schedule-body">
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <!-- Quick Action Bar -->
+    <div class="bottom-action-bar">
+      <button class="action-btn btn-primary-action ripple-effect" id="btn-copy-quote">
+        📋 Copy Quote
+      </button>
+      <button class="action-btn btn-whatsapp-action ripple-effect" id="btn-whatsapp-quote">
+        💬 WhatsApp Share
+      </button>
+      <button class="action-btn btn-secondary-action ripple-effect" id="btn-download-quote">
+        📥 CSV
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-msg" class="floating-toast" style="display:none;"></div>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

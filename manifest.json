@@ -1,0 +1,11 @@
+{
+  "manifest_version": 1,
+  "id": "in.lending.emicalculator",
+  "name": "Sumanchola Emi",
+  "version": "1.1.0",
+  "description": "Sumanchola Emi - Chola Finance Capitalization & Mandate Schedule Calculator",
+  "entry": "index.html",
+  "icon": "icon.png",
+  "theme_color": "#E7262B",
+  "permissions": {}
+}
