@@ -255,6 +255,7 @@ const el = {
   tabAdd: document.getElementById("tab-add"),
   tabCmp: document.getElementById("tab-cmp"),
 
+  selBikeModel: document.getElementById("sel-bike-model"),
   inpOnRoad: document.getElementById("inp-on-road"),
   inpDp: document.getElementById("inp-dp"),
   boxAutoLoan: document.getElementById("box-auto-loan"),
@@ -591,6 +592,24 @@ async function shareWhatsApp() {
 }
 
 function initEvents() {
+  // Two-Wheeler Model Auto-Selector
+  if (el.selBikeModel) {
+    el.selBikeModel.addEventListener("change", (e) => {
+      const price = parseFloat(e.target.value) || 0;
+      if (price > 0) {
+        state.onRoadPrice = price;
+        // Default DP: 15% to 20% or keep current
+        if (!state.downPayment || state.downPayment <= 0) {
+          state.downPayment = Math.round((price * 0.15) / 1000) * 1000;
+        }
+        state.loanAmount = Math.max(0, state.onRoadPrice - state.downPayment);
+        state.pfAmount = Math.round((state.loanAmount * 4.0) / 100);
+        syncInputsFromState();
+        recalculateAndRender();
+        showToast("Model selected: Road Price Auto-filled!");
+      }
+    });
+  }
   // Method Tabs
   el.tabCap.addEventListener("click", () => { state.method = "capitalization"; syncInputsFromState(); recalculateAndRender(); });
   el.tabAdd.addEventListener("click", () => { state.method = "add_to_first"; syncInputsFromState(); recalculateAndRender(); });
