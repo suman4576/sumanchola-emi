@@ -567,9 +567,12 @@ async function shareWhatsApp() {
 
   let msg = `*SUMANCHOLA FINANCE EMI QUOTE*\n`;
   msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+  if (state.selectedModelName) {
+    msg += `🏍️ *Vehicle:* ${state.selectedModelName}\n`;
+  }
   if (state.onRoadPrice > 0) {
-    msg += `🏍️ *On Road Price:* ${formatINR(state.onRoadPrice)}\n`;
-    msg += `💵 *Down Payment:* ${formatINR(state.downPayment)}\n`;
+    msg += `🏷️ *On Road Price:* ${formatINR(state.onRoadPrice)}\n`;
+    msg += `💵 *Down Payment (DP):* ${formatINR(state.downPayment)}\n`;
   }
   msg += `💰 *Loan Amount:* ${formatINR(state.loanAmount)}\n`;
   msg += `💼 *Dealer PF (4%):* ${formatINR(state.pfAmount)}\n`;
@@ -596,9 +599,12 @@ function initEvents() {
   if (el.selBikeModel) {
     el.selBikeModel.addEventListener("change", (e) => {
       const price = parseFloat(e.target.value) || 0;
+      const opt = e.target.options[e.target.selectedIndex];
+      const modelName = opt ? (opt.getAttribute("data-name") || opt.text) : "";
       if (price > 0) {
         state.onRoadPrice = price;
-        // Default DP: 15% to 20% or keep current
+        state.selectedModelName = modelName;
+        // Default DP: 15% to 20% rounded to nearest 1,000
         if (!state.downPayment || state.downPayment <= 0) {
           state.downPayment = Math.round((price * 0.15) / 1000) * 1000;
         }
@@ -606,7 +612,7 @@ function initEvents() {
         state.pfAmount = Math.round((state.loanAmount * 4.0) / 100);
         syncInputsFromState();
         recalculateAndRender();
-        showToast("Model selected: Road Price Auto-filled!");
+        showToast(`Selected: ${modelName} (₹${price.toLocaleString('en-IN')})`);
       }
     });
   }

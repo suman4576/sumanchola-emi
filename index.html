@@ -65,38 +65,109 @@
       <div class="input-group" style="margin-bottom: 12px;">
         <label class="field-label" for="sel-bike-model">⚡ Quick Select Two-Wheeler (Auto Road Price)</label>
         <div class="select-container" style="position: relative;">
-          <select id="sel-bike-model" class="date-control" style="font-weight: 700; padding: 10px 12px; background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 14px; width: 100%; color: #0F172A; cursor: pointer;">
-            <option value="">-- Choose Model (e.g. Splendor, Activa, Pulsar) --</option>
-            <optgroup label="Hero MotoCorp">
-              <option value="93000">Hero Splendor Plus (~₹93,000)</option>
-              <option value="78000">Hero HF Deluxe (~₹78,000)</option>
-              <option value="95000">Hero Passion Plus (~₹95,000)</option>
-              <option value="105000">Hero Glamour XTEC (~₹1,05,000)</option>
-            </optgroup>
-            <optgroup label="Honda">
-              <option value="96000">Honda Activa 6G / 110 (~₹96,000)</option>
-              <option value="99000">Honda Shine 125 (~₹99,000)</option>
-              <option value="108000">Honda SP 125 (~₹1,08,000)</option>
-              <option value="102000">Honda Dio 125 (~₹1,02,000)</option>
-            </optgroup>
-            <optgroup label="Bajaj">
-              <option value="82000">Bajaj Platina 100 (~₹82,000)</option>
-              <option value="105000">Bajaj Pulsar 125 (~₹1,05,000)</option>
-              <option value="135000">Bajaj Pulsar 150 (~₹1,35,000)</option>
-              <option value="182000">Bajaj Pulsar NS200 (~₹1,82,000)</option>
-            </optgroup>
-            <optgroup label="TVS">
-              <option value="58000">TVS XL 100 Heavy Duty (~₹58,000)</option>
-              <option value="94000">TVS Jupiter 110 (~₹94,000)</option>
-              <option value="115000">TVS Raider 125 (~₹1,15,000)</option>
-              <option value="145000">TVS Apache RTR 160 (~₹1,45,000)</option>
-            </optgroup>
-            <optgroup label="Royal Enfield">
-              <option value="185000">Royal Enfield Hunter 350 (~₹1,85,000)</option>
-              <option value="210000">Royal Enfield Bullet 350 (~₹2,10,000)</option>
-              <option value="225000">Royal Enfield Classic 350 (~₹2,25,000)</option>
-            </optgroup>
-          </select>
+          <select id="sel-bike-model" class="date-control" style="font-weight: 700; padding: 11px 14px; background: #FFFFFF; border: 1.5px solid #CBD5E1; border-radius: 14px; width: 100%; color: #0F172A; cursor: pointer; font-size: 0.88rem;">
+<option value="">-- 🏍️ Choose Model (Splendor, Activa, Pulsar, Raider...) --</option>
+<optgroup label="Hero (16 Models)">
+  <option value="93000" data-brand="Hero" data-name="Splendor Plus 01">Splendor Plus 01 (~₹93,000)</option>
+  <option value="98000" data-brand="Hero" data-name="Splendor Plus XTEC">Splendor Plus XTEC (~₹98,000)</option>
+  <option value="76000" data-brand="Hero" data-name="HF Deluxe Kick Start">HF Deluxe Kick Start (~₹76,000)</option>
+  <option value="82000" data-brand="Hero" data-name="HF Deluxe Self Start">HF Deluxe Self Start (~₹82,000)</option>
+  <option value="95000" data-brand="Hero" data-name="Passion Plus 100">Passion Plus 100 (~₹95,000)</option>
+  <option value="102000" data-brand="Hero" data-name="Passion XTEC 110">Passion XTEC 110 (~₹102,000)</option>
+  <option value="104000" data-brand="Hero" data-name="Glamour 125 Drum">Glamour 125 Drum (~₹104,000)</option>
+  <option value="112000" data-brand="Hero" data-name="Glamour XTEC Disc">Glamour XTEC Disc (~₹112,000)</option>
+  <option value="106000" data-brand="Hero" data-name="Super Splendor XTEC">Super Splendor XTEC (~₹106,000)</option>
+  <option value="118000" data-brand="Hero" data-name="Xtreme 125R (Single ABS)">Xtreme 125R (Single ABS) (~₹118,000)</option>
+  <option value="156000" data-brand="Hero" data-name="Xtreme 160R 4V">Xtreme 160R 4V (~₹156,000)</option>
+  <option value="178000" data-brand="Hero" data-name="Xpulse 200 4V">Xpulse 200 4V (~₹178,000)</option>
+  <option value="94000" data-brand="Hero" data-name="Pleasure Plus XTEC Scooter">Pleasure Plus XTEC Scooter (~₹94,000)</option>
+  <option value="97000" data-brand="Hero" data-name="Destini 125 Prime">Destini 125 Prime (~₹97,000)</option>
+  <option value="104000" data-brand="Hero" data-name="Destini 125 XTEC">Destini 125 XTEC (~₹104,000)</option>
+  <option value="98000" data-brand="Hero" data-name="Xoom 110 Sport">Xoom 110 Sport (~₹98,000)</option>
+</optgroup>
+<optgroup label="Honda (15 Models)">
+  <option value="94000" data-brand="Honda" data-name="Activa 6G STD 110">Activa 6G STD 110 (~₹94,000)</option>
+  <option value="98000" data-brand="Honda" data-name="Activa 6G DLX 110">Activa 6G DLX 110 (~₹98,000)</option>
+  <option value="103000" data-brand="Honda" data-name="Activa 6G H-Smart 110">Activa 6G H-Smart 110 (~₹103,000)</option>
+  <option value="101000" data-brand="Honda" data-name="Activa 125 Drum">Activa 125 Drum (~₹101,000)</option>
+  <option value="110000" data-brand="Honda" data-name="Activa 125 Disc / H-Smart">Activa 125 Disc / H-Smart (~₹110,000)</option>
+  <option value="92000" data-brand="Honda" data-name="Dio 110 STD">Dio 110 STD (~₹92,000)</option>
+  <option value="104000" data-brand="Honda" data-name="Dio 125 H-Smart">Dio 125 H-Smart (~₹104,000)</option>
+  <option value="78000" data-brand="Honda" data-name="Shine 100">Shine 100 (~₹78,000)</option>
+  <option value="98000" data-brand="Honda" data-name="Shine 125 Drum">Shine 125 Drum (~₹98,000)</option>
+  <option value="104000" data-brand="Honda" data-name="Shine 125 Disc">Shine 125 Disc (~₹104,000)</option>
+  <option value="106000" data-brand="Honda" data-name="SP 125 Drum">SP 125 Drum (~₹106,000)</option>
+  <option value="112000" data-brand="Honda" data-name="SP 125 Disc">SP 125 Disc (~₹112,000)</option>
+  <option value="142000" data-brand="Honda" data-name="SP 160 Single Disc">SP 160 Single Disc (~₹142,000)</option>
+  <option value="134000" data-brand="Honda" data-name="Unicorn 160 ABS">Unicorn 160 ABS (~₹134,000)</option>
+  <option value="168000" data-brand="Honda" data-name="Hornet 2.0 Repsol">Hornet 2.0 Repsol (~₹168,000)</option>
+</optgroup>
+<optgroup label="Bajaj (15 Models)">
+  <option value="82000" data-brand="Bajaj" data-name="Platina 100 ES">Platina 100 ES (~₹82,000)</option>
+  <option value="92000" data-brand="Bajaj" data-name="Platina 110 ABS">Platina 110 ABS (~₹92,000)</option>
+  <option value="84000" data-brand="Bajaj" data-name="CT 110X">CT 110X (~₹84,000)</option>
+  <option value="104000" data-brand="Bajaj" data-name="Pulsar 125 Carbon Single Seat">Pulsar 125 Carbon Single Seat (~₹104,000)</option>
+  <option value="109000" data-brand="Bajaj" data-name="Pulsar 125 Split Seat Disc">Pulsar 125 Split Seat Disc (~₹109,000)</option>
+  <option value="124000" data-brand="Bajaj" data-name="Pulsar NS 125">Pulsar NS 125 (~₹124,000)</option>
+  <option value="136000" data-brand="Bajaj" data-name="Pulsar 150 Single Disc">Pulsar 150 Single Disc (~₹136,000)</option>
+  <option value="142000" data-brand="Bajaj" data-name="Pulsar 150 Twin Disc ABS">Pulsar 150 Twin Disc ABS (~₹142,000)</option>
+  <option value="144000" data-brand="Bajaj" data-name="Pulsar N150 ABS">Pulsar N150 ABS (~₹144,000)</option>
+  <option value="158000" data-brand="Bajaj" data-name="Pulsar N160 Dual Channel ABS">Pulsar N160 Dual Channel ABS (~₹158,000)</option>
+  <option value="168000" data-brand="Bajaj" data-name="Pulsar NS160 Dual ABS">Pulsar NS160 Dual ABS (~₹168,000)</option>
+  <option value="182000" data-brand="Bajaj" data-name="Pulsar NS200 ABS">Pulsar NS200 ABS (~₹182,000)</option>
+  <option value="208000" data-brand="Bajaj" data-name="Pulsar RS200 ABS">Pulsar RS200 ABS (~₹208,000)</option>
+  <option value="180000" data-brand="Bajaj" data-name="Pulsar N250">Pulsar N250 (~₹180,000)</option>
+  <option value="142000" data-brand="Bajaj" data-name="Chetak Premium EV Scooter">Chetak Premium EV Scooter (~₹142,000)</option>
+</optgroup>
+<optgroup label="TVS (17 Models)">
+  <option value="62000" data-brand="TVS" data-name="XL 100 Comfort / HD">XL 100 Comfort / HD (~₹62,000)</option>
+  <option value="72000" data-brand="TVS" data-name="Sport 100 Kick">Sport 100 Kick (~₹72,000)</option>
+  <option value="82000" data-brand="TVS" data-name="Sport 100 Self Start">Sport 100 Self Start (~₹82,000)</option>
+  <option value="86000" data-brand="TVS" data-name="Radeon 110 Drum">Radeon 110 Drum (~₹86,000)</option>
+  <option value="96000" data-brand="TVS" data-name="Radeon 110 Disc XTEC">Radeon 110 Disc XTEC (~₹96,000)</option>
+  <option value="92000" data-brand="TVS" data-name="Jupiter 110 Sheet Metal">Jupiter 110 Sheet Metal (~₹92,000)</option>
+  <option value="104000" data-brand="TVS" data-name="Jupiter 110 ZX Disc / SmartXonnect">Jupiter 110 ZX Disc / SmartXonnect (~₹104,000)</option>
+  <option value="112000" data-brand="TVS" data-name="Jupiter 125 SmartXonnect">Jupiter 125 SmartXonnect (~₹112,000)</option>
+  <option value="116000" data-brand="TVS" data-name="Ntorq 125 Race Edition">Ntorq 125 Race Edition (~₹116,000)</option>
+  <option value="128000" data-brand="TVS" data-name="Ntorq 125 XT High-Tech">Ntorq 125 XT High-Tech (~₹128,000)</option>
+  <option value="112000" data-brand="TVS" data-name="Raider 125 Drum">Raider 125 Drum (~₹112,000)</option>
+  <option value="124000" data-brand="TVS" data-name="Raider 125 Disc / TFT">Raider 125 Disc / TFT (~₹124,000)</option>
+  <option value="145000" data-brand="TVS" data-name="Apache RTR 160 2V">Apache RTR 160 2V (~₹145,000)</option>
+  <option value="159000" data-brand="TVS" data-name="Apache RTR 160 4V Special">Apache RTR 160 4V Special (~₹159,000)</option>
+  <option value="178000" data-brand="TVS" data-name="Apache RTR 200 4V Dual ABS">Apache RTR 200 4V Dual ABS (~₹178,000)</option>
+  <option value="182000" data-brand="TVS" data-name="Ronin 225 Base">Ronin 225 Base (~₹182,000)</option>
+  <option value="138000" data-brand="TVS" data-name="iQube Standard EV">iQube Standard EV (~₹138,000)</option>
+</optgroup>
+<optgroup label="Royal Enfield (10 Models)">
+  <option value="182000" data-brand="Royal Enfield" data-name="Hunter 350 Retro">Hunter 350 Retro (~₹182,000)</option>
+  <option value="204000" data-brand="Royal Enfield" data-name="Hunter 350 Metro Rebel">Hunter 350 Metro Rebel (~₹204,000)</option>
+  <option value="205000" data-brand="Royal Enfield" data-name="Bullet 350 Military">Bullet 350 Military (~₹205,000)</option>
+  <option value="248000" data-brand="Royal Enfield" data-name="Bullet 350 Black Gold">Bullet 350 Black Gold (~₹248,000)</option>
+  <option value="224000" data-brand="Royal Enfield" data-name="Classic 350 Redditch">Classic 350 Redditch (~₹224,000)</option>
+  <option value="265000" data-brand="Royal Enfield" data-name="Classic 350 Dark / Chrome Dual ABS">Classic 350 Dark / Chrome Dual ABS (~₹265,000)</option>
+  <option value="242000" data-brand="Royal Enfield" data-name="Meteor 350 Fireball">Meteor 350 Fireball (~₹242,000)</option>
+  <option value="272000" data-brand="Royal Enfield" data-name="Meteor 350 Supernova">Meteor 350 Supernova (~₹272,000)</option>
+  <option value="285000" data-brand="Royal Enfield" data-name="Guerrilla 450">Guerrilla 450 (~₹285,000)</option>
+  <option value="340000" data-brand="Royal Enfield" data-name="Himalayan 450">Himalayan 450 (~₹340,000)</option>
+</optgroup>
+<optgroup label="Yamaha (7 Models)">
+  <option value="102000" data-brand="Yamaha" data-name="RayZR 125 Fi Hybrid">RayZR 125 Fi Hybrid (~₹102,000)</option>
+  <option value="106000" data-brand="Yamaha" data-name="Fascino 125 Fi Hybrid">Fascino 125 Fi Hybrid (~₹106,000)</option>
+  <option value="138000" data-brand="Yamaha" data-name="FZ-Fi Version 3.0">FZ-Fi Version 3.0 (~₹138,000)</option>
+  <option value="152000" data-brand="Yamaha" data-name="FZ-S Fi Version 4.0 DLX">FZ-S Fi Version 4.0 DLX (~₹152,000)</option>
+  <option value="202000" data-brand="Yamaha" data-name="MT-15 V2 Dual Channel ABS">MT-15 V2 Dual Channel ABS (~₹202,000)</option>
+  <option value="226000" data-brand="Yamaha" data-name="R15 V4 Racing Blue Dual ABS">R15 V4 Racing Blue Dual ABS (~₹226,000)</option>
+  <option value="182000" data-brand="Yamaha" data-name="Aerox 155 Maxi Scooter">Aerox 155 Maxi Scooter (~₹182,000)</option>
+</optgroup>
+<optgroup label="Suzuki (6 Models)">
+  <option value="99000" data-brand="Suzuki" data-name="Access 125 Drum Alloy">Access 125 Drum Alloy (~₹99,000)</option>
+  <option value="110000" data-brand="Suzuki" data-name="Access 125 Disc Ride Connect">Access 125 Disc Ride Connect (~₹110,000)</option>
+  <option value="132000" data-brand="Suzuki" data-name="Burgman Street 125 EX">Burgman Street 125 EX (~₹132,000)</option>
+  <option value="112000" data-brand="Suzuki" data-name="Avenis 125 Race Edition">Avenis 125 Race Edition (~₹112,000)</option>
+  <option value="164000" data-brand="Suzuki" data-name="Gixxer 150 Single ABS">Gixxer 150 Single ABS (~₹164,000)</option>
+  <option value="235000" data-brand="Suzuki" data-name="Gixxer SF 250">Gixxer SF 250 (~₹235,000)</option>
+</optgroup>
+</select>
         </div>
       </div>
 
